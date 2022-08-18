@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stddef.h>
 
 /*Structure Data*/
 /*-Stack Structure Data*/
@@ -20,9 +21,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+  int n;
+  struct stack_s *prev;
+  struct stack_s *next;
 } stack_t;
 
 /*-Instruction Structure Data*/
@@ -36,10 +37,32 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+  char *opcode;
+  void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*Prototypes*/
+/*-Global Variable Structure Data*/
+/**
+ * struct GlobVar - Holds the input FILEstream and buffer.
+ * @InputF: FILEstream's input.
+ * @TMP: buffer to save line input.
+ * @Mode: switches between queue and stack modes.
+ */
+struct GlobVar
+{
+  FILE *InputF;
+  char *TMP;
+  int Mode;
+};
 
+extern struct GlobVar GV;
+
+/*Prototypes*/
+/*-Monty_Main-*/
+int MOpenFile(char *FileName, stack_t **stack);
+void MParseCMD(stack_t **stack, char *OP, unsigned int LineNum);
+
+/*-MSwapAndAdd-*/
+void swap(stack_t **stack, unsigned int Val);
+void add(stack_t **stack, unsigned int Val);
 #endif
