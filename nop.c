@@ -1,14 +1,14 @@
-include "monty.h"
+#include "monty.h"
 
 /**
  * nop - opcode that doesn't do anything
  * @stack: void
- * @Value: void
+ * @Val: void
  *
  * Return: void
- */
-void nop(stack_t **stack, unsigned int Value)
+ **/
+void nop(stack_t **stack, unsigned int Val)
 {
 	(void)stack;
-	(void)Value;
+	(void)Val;
 }
