@@ -35,7 +35,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (isdigit(MNewHead->n))
 	{
-		fprintf(stdout, "L%i: usage: push integer\n", line_number);
+		fprintf(stderr, "L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -64,7 +64,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	while (Element != NULL)
 	{
-		fprintf(stdout, "%i\n", Element->n);
+		fprintf(stderr, "%i\n", Element->n);
 		Element = Element->next;
 	}
 }
