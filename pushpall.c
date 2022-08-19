@@ -7,44 +7,41 @@
  *
  * Return: el nuevo node que creamos (new_head).
  **/
-
-
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new_head;
-	char *OP; /*parametro del push*/
-	char *endptr;
-	int num;
+	stack_t *MNewHead;
+	char *OP;
+	char *EndPTR;
+	int NUM;
 
-	new_head = malloc(sizeof(stack_t));
-	if (new_head == NULL)
+	MNewHead = malloc(sizeof(stack_t));
+	if (MNewHead == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		freedlist(new_head);
-		freedlist(*stack);
+		printf("Error: malloc failed\n");
+		freelist(MNewHead);
+		freelist(*stack);
 		exit(EXIT_FAILURE);
 	}
-
 
 	OP = strtok(NULL, " \n$");
 
 	if (OP != NULL)
 	{
-		num = strtol(OP, &endptr, 10);
+		NUM = strtol(OP, &EndPTR, 10);
 	}
 
-	new_head->n = num;
-	new_head->prev = NULL;
+	MNewHead->n = NUM;
+	MNewHead->prev = NULL;
 
-	if (isdigit(new_head->n))
+	if (isdigit(MNewHead->n))
 	{
-		fprintf(stderr "L%i: usage: push integer\n", line_number);
+		printf("L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	new_head->next = *stack;
+	MNewHead->next = *stack;
 
-	*stack = new_head;
+	*stack = MNewHead;
 }
 
 /**
@@ -55,7 +52,7 @@ void push(stack_t **stack, unsigned int line_number)
  **/
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *element;
+	stack_t *Element;
 	(void)line_number;
 
 	if (*stack == NULL)
@@ -63,11 +60,11 @@ void pall(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	element = *stack;
+	Element = *stack;
 
-	while (element != NULL)
+	while (Element != NULL)
 	{
-		printf("%i\n", element->n);
-		element = element->next;
+		printf("%i\n", Element->n);
+		Element = Element->next;
 	}
 }
