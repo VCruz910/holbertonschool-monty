@@ -3,7 +3,7 @@
  * main - Handles Monty function
  * @argc: Argument count.
  * @argv: Argument vector.
- * return: Exit Success or Failure.
+ * Return: SUCCESS.
  **/
 int main(int argc, char *argv[])
 {
