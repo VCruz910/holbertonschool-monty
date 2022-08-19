@@ -85,7 +85,7 @@ void MParseCMD(stack_t **stack, char *OP, unsigned int line_number)
 
 	if (strlen(OP) != 0 && OP[0] != '#')
 	{
-		fprintf(stderr, "L%i: unkown instruction %s\n", line_number, OP);
+		fprintf(stderr, "L%i: unknown instruction %s\n", line_number, OP);
 		freelist(*stack);
 		exit(EXIT_FAILURE);
 	}
