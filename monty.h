@@ -58,6 +58,7 @@ struct GlobVar
 extern struct GlobVar GV;
 
 /*Prototypes*/
+
 /*-Monty_Main-*/
 int MOpenFile(char *FileName, stack_t **stack);
 void MParseCMD(stack_t **stack, char *OP, unsigned int LineNum);
@@ -65,4 +66,19 @@ void MParseCMD(stack_t **stack, char *OP, unsigned int LineNum);
 /*-MSwapAndAdd-*/
 void swap(stack_t **stack, unsigned int Val);
 void add(stack_t **stack, unsigned int Val);
+
+/*-pushpall-*/
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+
+/*-pintpop-*/
+void pint(stack_t **stack, unsigned int Val);
+void pop(stack_t **stack, unsigned int Val);
+
+/*-nop-*/
+void nop(stack_t **stack, unsigned int Val);
+
+/*-MFreeList-*/
+void freelist(stack_t *MHead);
+
 #endif
