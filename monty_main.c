@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * main - Handles Monty
+ * main - Handles Monty function
  * @argc: Argument count.
  * @argv: Argument vector.
  * return: Exit Success or Failure.
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf("USAGE: monty file\n");
+		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	MOpenFile(argv[1], &MHead);
@@ -36,7 +36,7 @@ int MOpenFile(char *FileName, stack_t **stack)
 		printf("Error: Can't open file %s\n", FileName);
 		exit(EXIT_FAILURE);
 	}
-	fd = fopen(FileName, "r");
+	FD = fopen(FileName, "r");
 	if (FD == NULL)
 	{
 		printf("Error: Can't open file %s\n", FileName);
@@ -51,14 +51,14 @@ int MOpenFile(char *FileName, stack_t **stack)
 	}
 	fclose(FD);
 	free(Line);
-	freedlist(*stack);
+	freelist(*stack);
 	return (EXIT_SUCCESS);
 }
 /**
  * MParseCMD - Parses lines and searches commands
  * @stack: First Node
  * @OP: Monty's commands
- * @LineNum: Number of lines.
+ * @line_number: Number of lines.
  **/
 void MParseCMD(stack_t **stack, char *OP, unsigned int line_number)
 {
@@ -74,11 +74,11 @@ void MParseCMD(stack_t **stack, char *OP, unsigned int line_number)
 		{NULL, NULL}
 	};
 
-	for (I = 0; COM[i].opcode; I++)
+	for (I = 0; COM[I].opcode; I++)
 	{
-		if (strcmp(OP, COM[i].opcode) == 0)
+		if (strcmp(OP, COM[I].opcode) == 0)
 		{
-			COM[i].f(stack, line_number);
+			COM[I].f(stack, line_number);
 			return;
 		}
 	}
@@ -86,7 +86,7 @@ void MParseCMD(stack_t **stack, char *OP, unsigned int line_number)
 	if (strlen(OP) != 0 && OP[0] != '#')
 	{
 		printf("L%i: unkown instructions %s\n", line_number, OP);
-		freedlist(*stack);
+		freelist(*stack);
 		exit(EXIT_FAILURE);
 	}
 }
