@@ -19,7 +19,7 @@ void push(stack_t **stack, unsigned int line_number)
 	new_head = malloc(sizeof(stack_t));
 	if (new_head == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		printf("Error: malloc failed\n");
 		freedlist(new_head);
 		freedlist(*stack);
 		exit(EXIT_FAILURE);
@@ -38,7 +38,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (isdigit(new_head->n))
 	{
-		fprintf(stderr "L%i: usage: push integer\n", line_number);
+		printf("L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
