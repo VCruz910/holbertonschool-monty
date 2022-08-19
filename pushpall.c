@@ -17,7 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 	MNewHead = malloc(sizeof(stack_t));
 	if (MNewHead == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		freelist(MNewHead);
 		freelist(*stack);
 		exit(EXIT_FAILURE);

@@ -33,13 +33,13 @@ int MOpenFile(char *FileName, stack_t **stack)
 
 	if (!FileName)
 	{
-		printf("Error: Can't open file %s\n", FileName);
+		fprintf(stderr, "Error: Can't open file %s\n", FileName);
 		exit(EXIT_FAILURE);
 	}
 	FD = fopen(FileName, "r");
 	if (FD == NULL)
 	{
-		printf("Error: Can't open file %s\n", FileName);
+		fprintf(stderr, "Error: Can't open file %s\n", FileName);
 		exit(EXIT_FAILURE);
 	}
 	while (getline(&Line, &LEN, FD) != EOF)
@@ -85,7 +85,7 @@ void MParseCMD(stack_t **stack, char *OP, unsigned int line_number)
 
 	if (strlen(OP) != 0 && OP[0] != '#')
 	{
-		printf("L%i: unkown instructions %s\n", line_number, OP);
+		fprintf(stderr, "L%i: unkown instructions %s\n", line_number, OP);
 		freelist(*stack);
 		exit(EXIT_FAILURE);
 	}
